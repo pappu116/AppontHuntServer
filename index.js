@@ -35,12 +35,12 @@ client.connect((err) => {
 
   //add order to
 
-  app.post("/addOrder", (req, res) => {
-    const order = req.body;
-    orderCollection.insertOne(order).then((result) => {
-      res.send(result.insertedCount > 0);
-    });
-  });
+  //   app.post("/addOrder", (req, res) => {
+  //     const order = req.body;
+  //     orderCollection.insertOne(order).then((result) => {
+  //       res.send(result.insertedCount > 0);
+  //     });
+  //   });
 
   //order red code
   app.get("/allOrder", (req, res) => {
