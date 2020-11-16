@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const fs = require("fs-extra");
-const fileUpload = require("express-fileUpload");
+const fileUpload = require("express-fileupload");
 const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 
@@ -35,12 +35,12 @@ client.connect((err) => {
 
   //add order to
 
-  //   app.post("/addOrder", (req, res) => {
-  //     const order = req.body;
-  //     orderCollection.insertOne(order).then((result) => {
-  //       res.send(result.insertedCount > 0);
-  //     });
-  //   });
+  app.post("/addOrder", (req, res) => {
+    const order = req.body;
+    orderCollection.insertOne(order).then((result) => {
+      res.send(result.insertedCount > 0);
+    });
+  });
 
   //order red code
   app.get("/allOrder", (req, res) => {
