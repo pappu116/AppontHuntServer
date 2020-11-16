@@ -61,7 +61,10 @@ client.connect((err) => {
   app.post("/addService", (req, res) => {
     const file = req.files.file;
     const title = req.body.title;
+    const location = req.body.location;
+    const bathroom = req.body.bathroom;
     const price = req.body.price;
+    const bedroom = req.body.bedroom;
     const newImg = req.files.file.data;
     const encImg = newImg.toString("base64");
 
@@ -70,9 +73,11 @@ client.connect((err) => {
       size: req.files.file.size,
       img: Buffer.from(encImg, "base64"),
     };
-    serviceCollection.insertOne({ title, price, image }).then((result) => {
-      res.send(result.insertedCount > 0);
-    });
+    serviceCollection
+      .insertOne({ title, price, bedroom, bathroom, location, image })
+      .then((result) => {
+        res.send(result.insertedCount > 0);
+      });
   });
 });
 
