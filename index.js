@@ -49,6 +49,21 @@ client.connect((err) => {
     });
   });
 
+  //update code document
+  app.patch("/update/:id", (req, res) => {
+    console.log(req.params.id, req.body.status);
+    orderCollection
+      .updateOne(
+        { _id: req.params.id },
+        {
+          $set: { status: req.body.status },
+        }
+      )
+      .then((result) => {
+        res.send(result.modifiedCount > 0);
+      });
+  });
+
   //service red code
 
   app.get("/service", (req, res) => {
